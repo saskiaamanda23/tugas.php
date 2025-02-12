@@ -14,7 +14,7 @@ use App\Http\Controllers\{
 
 Route::get('genre', [GenreController::class,'index'])->name('genre.index');
 Route::get('genre/create', [GenreController::class,'create'])->name('genre.create');
-Route::post('genre/submit', [GenreController::class,'submit'])->name('genre.submit');
+Route::post('genre', [GenreController::class,'store'])->name('genre.store');
 Route::get('genre/edit/{id}', [GenreController::class, 'edit'])->name('genre.edit');
 Route::put('genre/update/{id}', [GenreController::class, 'update'])->name('genre.update');
 Route::delete('genre/delete/{id}', [GenreController::class, 'delete'])->name('genre.delete');

@@ -5,11 +5,13 @@
     <link rel="stylesheet" href="{{asset('template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 @endpush
 
-@section('web-title', 'Data Genre')
+@section('web-title', 'Data Cast')
+@section('content-title','Check Your Favorite Casts Here!')
 @section('content')
+
 @if ($message = Session::get('Success'))
     <div class="alert alert-success alert-block">
-    <button type="button" class="close" data-dismiss="alert">×</button>
+    <button type="button" class="close" data-dismiss="alert">X</button>
         <strong>{{ $message }}</strong>
     </div>
 @endif
@@ -17,8 +19,8 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-            <a href="{{ route('genre.create') }}" class="btn btn-sm btn-outline-primary">
-            <i class="fa fa-plus"> Genre</i>
+            <a href="{{ route('cast.create') }}" class="btn btn-sm btn-outline-primary">
+            <i class="fa fa-plus"> Cast</i>
             </a>
         </div>
         <!-- /.card-header -->
@@ -28,24 +30,32 @@
                 <tr>
                 <th>No</th>
                 <th>Cast Name</th>
+                <th>Age</th>
+                <th>Bio</th>
                 <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse ($genres as $key => $value)
+                @forelse ($casts as $key => $value)
                 <tr>
                     <td>
-                    {{ $key + 1 }}
+                    {{ $key + 1 }}  
                     </td>
                     <td>
                     {{ $value->name }}
                     </td>
                     <td>
+                    {{ $value->age }}
+                    </td>
+                    <td>
+                    {{ $value->bio }}
+                    </td>
+                    <td>
                         {{-- <a href="{{ route('genre.show', $value->id) }}" class="btn btn-sm btn-info">
                         Detail
                         </a> --}}
-                        <form action="{{ route('genre.destroy',$value->id) }}" method="post">
-                            <a href="{{ route('genre.edit', $value->id) }}" class="btn btn-sm btn-warning">
+                        <form action="{{ route('cast.destroy',$value->id) }}" method="post">
+                            <a href="{{ route('cast.edit', $value->id) }}" class="btn btn-sm btn-warning">
                                 <i class="fas fa-pen"></i>
                                 <span>Edit</span>
                             </a>
